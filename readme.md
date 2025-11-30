@@ -1,7 +1,3 @@
-Aquí tienes el contenido completo formateado en Markdown, listo para que lo copies y pegues en tu archivo `HELP.md`.
-
------
-
 # ComplyDome Event Foundations
 
 Librería base para estandarizar la comunicación por eventos entre microservicios utilizando **AWS SNS (Publicación)** y
