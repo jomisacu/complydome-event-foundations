@@ -64,7 +64,7 @@ la deserialización. Debemos desactivar ese comportamiento.
 
 ### A. Definir un Evento (El Contrato)
 
-Crea una clase (preferiblemente un `record`) que implemente `DomainEventInterface`.
+Crea una clase `record` que implemente `DomainEventInterface`.
 **Regla de Oro:** Debes definir la constante pública `EVENT_NAME`. Este string es el identificador único que une al
 Publicador y al Consumidor.
 
