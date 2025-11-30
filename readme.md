@@ -73,33 +73,31 @@ Crea una clase (preferiblemente un `record`) que implemente `DomainEventInterfac
 Publicador y al Consumidor.
 
 ```java
-package com.complydome.users.domain.events;
+package com.complydome.users_management;
 
 import com.complydome.event_foundations.DomainEventInterface;
 
 import java.time.Instant;
 import java.util.UUID;
 
-public record UserCreatedEvent(String userId, String email) implements DomainEventInterface {
+public record UserCreatedEvent(
+        String userId,
+        String email,
+        String eventId,
+        Instant occurredOn
+) implements DomainEventInterface {
 
-    // ESTE VALOR ES EL CONTRATO. Debe ser idéntico en todos los microservicios (Producer y Consumer).
-    public static final String EVENT_NAME = "users.user.created";
+    public static final String TYPE = "users.user.created";
 
-    @Override
-    public String getType() {
-        return EVENT_NAME;
+    public UserCreatedEvent(String userId, String email) {
+        this(userId, email, UUID.randomUUID().toString(), Instant.now());
     }
 
-    @Override
-    public Instant getOccurredOn() {
-        return Instant.now();
-    }
-
-    @Override
-    public String getEventId() {
-        return UUID.randomUUID().toString();
-    }
+    @Override public String getType() { return TYPE; }
+    @Override public Instant getOccurredOn() { return occurredOn; }
+    @Override public String getEventId() { return eventId; }
 }
+
 ```
 
 ### B. Publicar un Evento (Producer)
